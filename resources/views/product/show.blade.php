@@ -26,15 +26,11 @@
 
 </h5>
 
-<p class="card-text">{{ $viewData["product"]["description"] }}</p>
+ <p class="card-text">{{ $viewData["product"]["price"] }}</p>
 
-<p class="card-text">
-    <small class="text-muted" 
-        style="color: {{ $viewData['product']['price'] > 100 ? 'red' : 'inherit' }};">
-        ${{ $viewData["product"]["price"] }}
-    </small>
-</p>
-
+ @foreach($viewData["product"]->comments as $comment)
+ - {{ $comment->getDescription() }}<br />
+ @endforeach
 </div>
 
 </div>
