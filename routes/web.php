@@ -32,3 +32,10 @@ Route::post('/products/save', 'App\Http\Controllers\ProductController@save')->na
 Route::get('/products/{id}', 'App\Http\Controllers\ProductController@show')->name("product.show");
 
 Route::get('/contact', 'App\Http\Controllers\ContactController@show')->name("contact.show");
+#Taller 1 - Clase Orders
+Route::get('/orders', 'App\Http\Controllers\OrderController@index')->name("order.index");
+Route::get('/orders/create', 'App\Http\Controllers\OrderController@create')->name("order.create");
+Route::get('/orders/list', 'App\Http\Controllers\OrderController@list')->name("order.list");
+Route::post('/orders/save', 'App\Http\Controllers\OrderController@save')->name("order.save");
+Route::get('/orders/{id}', 'App\Http\Controllers\OrderController@show')->name("order.show");
+Route::get('/orders/{id}/delete', 'App\Http\Controllers\OrderController@delete')->name("order.delete");
