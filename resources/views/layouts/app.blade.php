@@ -30,6 +30,7 @@
                     <a class="nav-link active" href="{{ route('product.index') }}">Product</a>
                     <a class="nav-link active" href="{{ route('contact.show') }}">Contact</a>
                     <a class="nav-link active" href="{{ route('order.index') }}">Orders (Taller1)</a>
+                    <a class="nav-link active" href="{{ route('cart2.index') }}">Cart</a>
                 </div>
             </div>
         </div>

@@ -23,3 +23,6 @@ Route::get('/cart/removeAll/', 'App\Http\Controllers\CartController@removeAll')-
 Route::get('/image', 'App\Http\Controllers\ImageController@index')->name('image.index');
 Route::post('/image/save', 'App\Http\Controllers\ImageController@save')->name('image.save');
 // item
+Route::get('/cart2', 'App\Http\Controllers\Cart2Controller@index')->name('cart2.index');
+Route::post('/cart2/add/{id}', 'App\Http\Controllers\Cart2Controller@add')->name('cart2.add');
+Route::get('/cart2/delete/', 'App\Http\Controllers\Cart2Controller@removeAll')->name('cart2.removeAll');
