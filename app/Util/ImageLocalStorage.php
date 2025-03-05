@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Util;
 
 use App\Interfaces\ImageStorage;
