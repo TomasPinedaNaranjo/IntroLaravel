@@ -26,4 +26,6 @@ Route::post('/image/save', 'App\Http\Controllers\ImageController@save')->name('i
 Route::get('/cart2', 'App\Http\Controllers\Cart2Controller@index')->name('cart2.index');
 Route::get('/cart2/delete/', 'App\Http\Controllers\Cart2Controller@delete')->name('cart2.delete');
 Route::post('/cart2/add/{id}', 'App\Http\Controllers\Cart2Controller@add')->name('cart2.add');
-
+// purchase
+Route::get('/cart/purchase', 'App\Http\Controllers\Cart2Controller@purchase')->name('cart2.purchase');
+Route::get('/my-account/orders', 'App\Http\Controllers\MyAccountController@orders')->name('myaccount.orders');

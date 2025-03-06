@@ -21,6 +21,8 @@ class Product extends Model
      * $this->attributes['price'] - int - contains the product price
 
      * $this->comments - Comment[] - contains the associated comment
+
+     * $this->items - Item[] - contains the associated items
      */
     protected $fillable = ['name', 'price'];
 
@@ -81,13 +83,29 @@ class Product extends Model
         $this->comments = $comments;
 
     }
-    public static function sumPricesByQuantities($products, $productsInSession) 
-    { 
-        $total = 0; 
-        foreach ($products as $product) { 
-            $total = $total + ($product->getPrice()*$productsInSession[$product->getId()]); 
-        } 
- 
-        return $total; 
-    } 
+
+    public static function sumPricesByQuantities($products, $productsInSession)
+    {
+        $total = 0;
+        foreach ($products as $product) {
+            $total = $total + ($product->getPrice() * $productsInSession[$product->getId()]);
+        }
+
+        return $total;
+    }
+
+    public function items()
+    {
+        return $this->hasMany(Item::class);
+    }
+
+    public function getItems()
+    {
+        return $this->items;
+    }
+
+    public function setItems($items)
+    {
+        $this->items = $items;
+    }
 }
