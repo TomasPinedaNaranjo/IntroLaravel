@@ -15,12 +15,11 @@ class Order extends Model
      * $this->attributes['id'] - int - contains the product primary key (id)
 
      * $this->attributes['item'] - string - contains the product name
-      
+
      * $this->attributes['total'] - float - contains the product price
-     
+
      * $this->attributes['address'] - string - contains the product description
      */
-
     protected $fillable = ['item', 'total', 'address', 'payment_method'];
 
     public function getId(): int
@@ -33,14 +32,19 @@ class Order extends Model
         $this->attributes['id'] = $id;
     }
 
-    public function getItem(): string
+    public function items()
     {
-        return $this->attributes['item'];
+        return $this->hasMany(Item::class);
     }
 
-    public function setItem($item): void
+    public function getItem(): string
     {
-        $this->attributes['item'] = $item;
+        return $this->items;
+    }
+
+    public function setItem($items): void
+    {
+        $this->items = $items;
     }
 
     public function getTotal(): float

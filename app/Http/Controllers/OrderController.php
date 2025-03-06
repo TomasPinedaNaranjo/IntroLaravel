@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Order;
+use App\Validators\OrdersValidator;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
-use App\Validators\OrdersValidator;
 
 class OrderController extends Controller
 {
