@@ -29,3 +29,9 @@ Route::post('/cart2/add/{id}', 'App\Http\Controllers\Cart2Controller@add')->name
 // purchase
 Route::get('/cart/purchase', 'App\Http\Controllers\Cart2Controller@purchase')->name('cart2.purchase');
 Route::get('/my-account/orders', 'App\Http\Controllers\MyAccountController@orders')->name('myaccount.orders');
+// parcial 1
+Route::get('/ninjas', 'App\Http\Controllers\NinjaController@index')->name('ninja.index');
+Route::get('/ninjas/create', 'App\Http\Controllers\NinjaController@create')->name('ninja.create');
+Route::post('/ninjas/save', 'App\Http\Controllers\NinjaController@save')->name('ninja.save');
+Route::get('/ninjas/list', 'App\Http\Controllers\NinjaController@list')->name('ninja.list');
+Route::get('/ninjas/stats', 'App\Http\Controllers\NinjaController@stats')->name('ninja.stats');
