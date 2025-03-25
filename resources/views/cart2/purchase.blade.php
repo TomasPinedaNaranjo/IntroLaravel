@@ -11,6 +11,7 @@
       Congratulations, purchase completed. Order number is <b>#{{ $viewData["order"]->getId() 
 }}</b> 
     </div> 
+    <a href="{{ route('cart.downloadInvoice', ['id' => $viewData['order']->getId()]) }}" class="btn btn-primary">Descargar Factura</a>
   </div> 
 </div> 
 @endsection 
