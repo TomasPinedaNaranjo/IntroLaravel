@@ -6,6 +6,7 @@ use App\Models\Item;
 use App\Models\Order;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class Cart2Controller extends Controller
 {
@@ -91,4 +92,36 @@ class Cart2Controller extends Controller
         }
 
     }
+
+    public function downloadInvoice($id)
+{
+    $order = Order::findOrFail($id);
+    $productsInCart = Product::findMany(explode(', ', $order->item));
+    $productsInSession = session('products');
+
+    $quantities = [];
+    if ($productsInSession) {
+        foreach ($productsInCart as $product) {
+            if (isset($productsInSession[$product->getId()])) {
+                $quantities[$product->getId()] = $productsInSession[$product->getId()];
+            } else {
+                // Si no existe el producto en la sesión, asignar una cantidad por defecto (por ejemplo, 1)
+                $quantities[$product->getId()] = 1;
+            }
+        }
+    } else {
+        // Si no hay sesión de productos, asignar cantidades por defecto (por ejemplo, 1)
+        foreach ($productsInCart as $product) {
+            $quantities[$product->getId()] = 1;
+        }
+    }
+
+    $pdf = Pdf::loadView('cart2.invoice', [
+        'order' => $order,
+        'products' => $productsInCart,
+        'quantities' => $quantities,
+    ]);
+
+    return $pdf->download('factura_' . $order->getId() . '.pdf');
+}
 }
